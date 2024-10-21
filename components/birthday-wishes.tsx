@@ -24,19 +24,61 @@ export function BirthdayWishesComponent() {
     setTimeout(() => setShowConfetti(false), 3000)
   }
 
-  const handleAddWish = () => {
+  const handleAddWish = async() => {
+    // if (newWish.trim()) {
+    //   setWishes([...wishes, newWish.trim()])
+    //   setNewWish("")
+    //   // Here you would typically send the wish to a server
+    //   console.log("Wish sent to server:", newWish.trim())
+    // }
     if (newWish.trim()) {
-      setWishes([...wishes, newWish.trim()])
-      setNewWish("")
-      // Here you would typically send the wish to a server
-      console.log("Wish sent to server:", newWish.trim())
+      try {
+        // 发送请求到服务器
+        const response = await fetch('/api/test', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ wish: newWish.trim() })
+        });
+
+        if (response.ok) {
+          // 更新状态
+          setWishes([...wishes, newWish.trim()]);
+          setNewWish("");
+          console.log("Wish sent to server:", newWish.trim());
+        } else {
+          console.error("Failed to send wish to server");
+        }
+      } catch (error) {
+        console.error("Error sending wish to server:", error);
+      }
     }
   }
 
-  const handleLike = () => {
-    setIsLiked(true)
-    // Here you would typically send the like to a server
-    console.log("Like sent to server")
+  const handleLike = async () => {
+    try {
+      // 发送请求到服务器
+      const response = await fetch('http://localhost:3001/api/likes', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ liked: true })
+      });
+
+      if (response.ok) {
+        // 获取响应数据
+        const data = await response.json();
+        // 更新状态
+        setIsLiked(true);
+        console.log("Like sent to server", data);
+      } else {
+        console.error("Failed to send like to server", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error sending like to server:", error);
+    }
   }
 
   const toggleMusic = () => {
