@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Gift, Cake, Send, List, Mail, X, ThumbsUp, Volume2, VolumeX } from "lucide-react"
+import { Gift, Cake, Mail, ThumbsUp, Volume2, VolumeX } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
