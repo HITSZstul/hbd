@@ -9,6 +9,5 @@ export async function GET(request: NextRequest){
 export async function POST(request: NextRequest){
     const {wish} = await request.json();
     console.log(wish);
-    console.log("hello")
     return new Response(wish);
 }

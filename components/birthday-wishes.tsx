@@ -59,7 +59,7 @@ export function BirthdayWishesComponent() {
   const handleLike = async () => {
     try {
       // 发送请求到服务器
-      const response = await fetch('http://localhost:3001/api/likes', {
+      const response = await fetch('/api/test', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -142,7 +142,7 @@ export function BirthdayWishesComponent() {
               onClick={handleOpenGift}
               className="w-full h-32 text-2xl bg-gradient-to-r from-pink-500 to-blue-500 hover:from-pink-600 hover:to-blue-600 text-white"
             >
-              <Gift className="mr-2 h-8 w-8" /> Open Your Gift
+              <Gift className="mr-2 h-8 w-8" /> Click me
             </Button>
           ) : (
             <div className="space-y-4">
@@ -153,33 +153,40 @@ export function BirthdayWishesComponent() {
                   className="w-32 h-32 rounded-full border-4 border-pink-300"
                 />
               </div>
-              <Cake className="w-16 h-16 mx-auto text-pink-500" />
-              <p className="text-center text-lg text-gray-700">
-                May your day be filled with joy and laughter!
-              </p>
+              <Cake className="w-32 h-32 mx-auto text-pink-700" />
+              
               <Button
+                variant="outline"
                 onClick={() => setIsLetterOpen(true)}
-                className="w-full bg-blue-500 hover:bg-blue-600 text-white"
+                className=" bg-blue-500 hover:bg-blue-600 text-white w-36 float-right"
               >
-                <Mail className="mr-2 h-4 w-4" /> Open Letter
+                Letter For You
+                <Mail className="mr-2 h-4 w-4" /> 
               </Button>
+              
+              <p className="flex w-full text-center text-lg text-gray-700  rounded p-4">
+                  "May your day be filled with joy and laughter!"
+              </p>
               <div className="flex space-x-2">
                 <Input
                   type="text"
-                  placeholder="Add your wish..."
+                  placeholder="摘星辰..."
                   value={newWish}
                   onChange={(e) => setNewWish(e.target.value)}
                   className="flex-grow"
                 />
                 <Button onClick={handleAddWish} className="bg-blue-500 hover:bg-blue-600 text-white">
-                  <Send className="h-4 w-4" />
+                  许愿
+                  {/* <Send className="h-4 w-4" /> */}
                 </Button>
               </div>
               <Button
                 onClick={() => setShowWishList(!showWishList)}
                 className="w-full bg-black hover:bg-gray-800 text-white"
               >
-                <List className="mr-2 h-4 w-4" /> {showWishList ? "Hide" : "Show"} Wishes
+                {/* <List className="mr-2 h-4 w-4" />  */}
+                {/* {showWishList ? "Hide" : "Show"} Wishes */}
+                许愿池
               </Button>
               {showWishList && (
                 <ul className="mt-4 space-y-2">
@@ -195,11 +202,13 @@ export function BirthdayWishesComponent() {
         </CardContent>
       </Card>
       <Dialog open={isLetterOpen} onOpenChange={setIsLetterOpen}>
-        <DialogContent className="bg-pink-50 border-2 border-pink-300">
-          <DialogHeader>
-            <DialogTitle className="text-2xl font-bold text-pink-600">A Special Message for You</DialogTitle>
+        <DialogContent className="bg-pink-50 border-2 border-pink-300 ">
+        <div className="absolute inset-0 bg-cover bg-center " style={{ backgroundImage: 'url(https://java-web-simon.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20241022150924.jpg)' }}></div>
+        <div className="relative z-10 bg-white bg-opacity-80 p-4 rounded-lg">
+        <DialogHeader className="bg-opacity-80 bg-opacity-80">
+            <DialogTitle className="text-2xl font-bold text-pink-600 ">Letter for You</DialogTitle>
           </DialogHeader>
-          <DialogDescription className="text-gray-700">
+          <DialogDescription className="text-gray-700 bg-white p-4 bg-opacity-90">
             <p className="mb-4">Dear Augenstern,</p>
             <p className="mb-4">On this special day, I want to tell you how much you mean to me. Your presence in my life brings joy, laughter, and warmth. May this birthday be as wonderful as you are.</p>
             <p className="mb-4">Wishing you a year filled with exciting adventures, beautiful moments, and all the happiness you deserve.</p>
@@ -208,13 +217,12 @@ export function BirthdayWishesComponent() {
             <p>Your Friend</p>
           </DialogDescription>
           <DialogFooter className="flex justify-between items-center">
-            <Button onClick={() => setIsLetterOpen(false)} variant="outline">
-              <X className="mr-2 h-4 w-4" /> Close
-            </Button>
             <Button onClick={handleLike} disabled={isLiked} className={isLiked ? "bg-pink-300" : "bg-pink-500 hover:bg-pink-600"}>
               <ThumbsUp className="mr-2 h-4 w-4" /> {isLiked ? "Liked!" : "Like"}
             </Button>
           </DialogFooter>
+        </div>
+        
         </DialogContent>
       </Dialog>
       <style jsx>{`
