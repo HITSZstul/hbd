@@ -165,7 +165,7 @@ export function BirthdayWishesComponent() {
               </Button>
               
               <p className="flex w-full text-center text-lg text-gray-700  rounded p-4">
-                  "May your day be filled with joy and laughter!"
+                  May your day be filled with joy and laughter!
               </p>
               <div className="flex space-x-2">
                 <Input
