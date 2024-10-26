@@ -205,12 +205,12 @@ export function BirthdayWishesComponent() {
         <DialogContent className="bg-pink-50 border-2 border-pink-300 ">
         <div className="absolute inset-0 bg-cover bg-center " style={{ backgroundImage: 'url(https://java-web-simon.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20241022150924.jpg)' }}></div>
         <div className="relative z-10 bg-white bg-opacity-80 p-4 rounded-lg">
-        <DialogHeader className="bg-opacity-80 bg-opacity-80">
+        <DialogHeader className="bg-opacity-80 bg-opacity-0">
             <DialogTitle className="text-2xl font-bold text-pink-600 ">Letter for You</DialogTitle>
           </DialogHeader>
-          <DialogDescription className="text-gray-700 bg-white p-4 bg-opacity-90">
-            <p className="mb-4">Dear Augenstern,</p>
-            <p className="mb-4">On this special day, I want to tell you how much you mean to me. Your presence in my life brings joy, laughter, and warmth. May this birthday be as wonderful as you are.</p>
+          <DialogDescription className="text-gray-700 bg-white p-4 bg-opacity-0">
+            <p className="mb-4 ">Dear Augenstern,</p>
+            <p className="mb-4 ">On this special day, I want to tell you how much you mean to me. Your presence in my life brings joy, laughter, and warmth. May this birthday be as wonderful as you are.</p>
             <p className="mb-4">Wishing you a year filled with exciting adventures, beautiful moments, and all the happiness you deserve.</p>
             <p>Happy Birthday!</p>
             <p className="mt-4">With love,</p>
